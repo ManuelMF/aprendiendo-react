@@ -13,4 +13,5 @@ list rendering
 events
 save to local storage
 
-![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/fa4490ec-04d1-4b9e-8756-bf398f292298)
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/a87573e3-86d2-4d75-8e9a-4ab4c3d07e6b)
+
