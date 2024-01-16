@@ -1,4 +1,4 @@
-﻿# aprendiendo-react
+﻿# Learning React
 
 ## Twiter follow Card 
 when I have the mouse in the button change like the first element
