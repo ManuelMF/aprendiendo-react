@@ -30,6 +30,7 @@ Retrieves a random cat fact from the first API and displays an image of a cat wi
 
 ![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/0b3ef20c-149d-4a26-8389-9058344b4865)
 
-/ add test 
+- add test
+  
 ![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/3648106a-2716-468a-9bed-5eced775cf54)
 
