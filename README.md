@@ -29,3 +29,6 @@ APIs:
 Retrieves a random cat fact from the first API and displays an image of a cat with the first word of the fact retrieved using the second API.
 
 ![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/0b3ef20c-149d-4a26-8389-9058344b4865)
+
+and add test 
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/894676ba-0622-4da1-8f0f-04b301452231)
