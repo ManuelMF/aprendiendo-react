@@ -34,7 +34,7 @@ Retrieves a random cat fact from the first API and displays an image of a cat wi
 ![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/3648106a-2716-468a-9bed-5eced775cf54)
 
 
-## aplicación para buscar películas
+## Movie search app
 
 API to use: - https://www.omdbapi.com/ Get the API Key on the website itself by registering your email.
 
