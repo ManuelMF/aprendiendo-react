@@ -1,0 +1,17 @@
+.page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  justify-content: center;
+  display: flex;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
