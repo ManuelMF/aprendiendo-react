@@ -44,7 +44,7 @@ function App() {
 
   const debouncedGetMovies = useCallback(
     debounce((search) => {
-      getMovies({ search })
+      getMovies(search)
     }, 500),
     [getMovies]
   )
