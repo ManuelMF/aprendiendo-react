@@ -1,7 +1,8 @@
 import './App.css'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import debounce from 'just-debounce-it'
 
 function useSearch() {
   const [search, updateSearch] = useState('')
@@ -36,9 +37,17 @@ function useSearch() {
 }
 
 function App() {
-  const { movies } = useMovies()
-  const { search, updateSearch, error } = useSearch()
+  const [sort, setSort] = useState(false)
 
+  const { search, updateSearch, error } = useSearch()
+  const { movies, getMovies, loading } = useMovies({ search, sort })
+
+  const debouncedGetMovies = useCallback(
+    debounce((search) => {
+      getMovies({ search })
+    }, 500),
+    [getMovies]
+  )
   const handleSubmit = (event) => {
     // con el event podemos obtener los datos del formulario al hacer un onSubmit
     event.preventDefault() //para que no se recarge la pagina
@@ -54,13 +63,17 @@ function App() {
     //const { query } = Object.fromEntries(new window.FormData(event.target))
 
     //controlando estados
-    console.log({ search })
+    getMovies(search)
   }
 
   const handleChange = (event) => {
     updateSearch(event.target.value)
+    debouncedGetMovies(event.target.value)
   }
 
+  const handleSort = () => {
+    setSort(!sort)
+  }
   return (
     <div className="page">
       <h1>Buscador de peliculas</h1>
@@ -73,14 +86,13 @@ function App() {
             type="text"
             value={search}
           />
+          <input type="checkbox" onChange={handleSort} checked={sort} />
           <button type="sumbit">Buscar</button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </header>
 
-      <main>
-        <Movies movies={movies} />
-      </main>
+      <main>{loading ? <p>Cargando...</p> : <Movies movies={movies} />}</main>
     </div>
   )
 }
