@@ -33,3 +33,32 @@ Retrieves a random cat fact from the first API and displays an image of a cat wi
   
 ![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/3648106a-2716-468a-9bed-5eced775cf54)
 
+
+## aplicación para buscar películas
+
+API to use: - https://www.omdbapi.com/ Get the API Key on the website itself by registering your email.
+
+- API_KEY: 4287ad07
+
+Requirements:
+
+✅ You need to show an input to search for the movie and a button to search.
+
+✅ List the movies and show the title, year and poster.
+
+✅ Make the form work
+
+✅ Make movies display on a responsive grid.
+
+✅ Fetch data to the API
+
+First iteration:
+
+✅ Prevent the same search from being done twice in a row.
+
+✅ Make the search happen automatically when you type.
+
+✅ Prevent the search from being carried out continuously when typing (debounce)
+
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/11079a8e-707f-4b92-acfe-9066b834f763)
+
