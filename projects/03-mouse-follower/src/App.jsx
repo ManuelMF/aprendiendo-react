@@ -3,13 +3,13 @@ import './App.css'
 
 const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
-  const [position, setPosition] = useState({ x:0, y:0 })
+  const [position, setPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    console.log('efecto');
+    console.log('efecto')
     const handleMove = (event) => {
-      const {clientX, clientY} = event
-      console.log({clientX, clientY});
+      const { clientX, clientY } = event
+      console.log({ clientX, clientY })
       setPosition({ x: clientX, y: clientY })
     }
     if (enabled) {
@@ -19,7 +19,7 @@ const FollowMouse = () => {
     // Cleanup:
     // --> cuando el componentes se desmonta
     // --> cuando cambian las dependencias, antes de ejecutar
-    //     el efecto de nuevo
+    //     el efecto de nuevo, borra cada vez que se ejecuta para que no se acumule
     return () => {
       window.removeEventListener('pointermove', handleMove)
     }
@@ -27,22 +27,24 @@ const FollowMouse = () => {
 
   return (
     <>
-      <div style={{
-        position: 'absolute',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        border: '1px solid #fff',
-        borderRadius: '50%',
-        opacity: 0.8,
-        pointerEvents: 'none',
-        left: -20,
-        top: -20,
-        width: 40,
-        height: 40,
-        transform: `translate(${position.x}px, ${position.y}px)`
-      }}></div>
-          
+      <div
+        style={{
+          position: 'absolute',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          border: '1px solid #fff',
+          borderRadius: '50%',
+          opacity: 0.8,
+          pointerEvents: 'none',
+          left: -20,
+          top: -20,
+          width: 40,
+          height: 40,
+          transform: `translate(${position.x}px, ${position.y}px)`,
+        }}
+      ></div>
+
       <button onClick={() => setEnabled(!enabled)}>
-      {`${enabled ? 'Desactivar' : 'Activar'} seguir puntero`}
+        {`${enabled ? 'Desactivar' : 'Activar'} seguir puntero`}
       </button>
     </>
   )
@@ -51,7 +53,7 @@ const FollowMouse = () => {
 function App() {
   return (
     <main>
-     <FollowMouse /> 
+      <FollowMouse />
     </main>
   )
 }
