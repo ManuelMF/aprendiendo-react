@@ -45,3 +45,11 @@
   object-fit: cover;
   background: #fff;
 }
+
+.addProductButton {
+  background-color: #09f;
+}
+
+.deleteProductButton {
+  background-color: red;
+}
