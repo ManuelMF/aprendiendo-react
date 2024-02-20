@@ -12,7 +12,9 @@ function CartItem({ thumbnail, price, title, quantity, addToCart }) {
       </div>
       <footer>
         <small>Qty: {quantity}</small>
-        <button onClick={addToCart}>+</button>
+        <button onClick={addToCart} style={{ color: 'white' }}>
+          +
+        </button>
       </footer>
     </li>
   )
@@ -38,7 +40,7 @@ export function Cart() {
             />
           ))}
         </ul>
-        <button onClick={cleanCart}>
+        <button onClick={cleanCart} style={{ color: 'white' }}>
           <ClearCartIcon />
         </button>
       </aside>
