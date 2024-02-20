@@ -62,3 +62,35 @@ First iteration:
 
 ![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/11079a8e-707f-4b92-acfe-9066b834f763)
 
+## Shopping Cart
+Ecommerce
+
+✅ Muestra una lista de productos que vienen de un JSON
+
+✅ Añade un filtro por categoría
+
+✅ Añade un filtro por precio
+
+✅ Haz uso de useContext para evitar pasar props innecesarias.
+
+Carrito:
+
+✅ Haz que se puedan añadir los productos a un carrito.
+
+✅ Haz que se puedan eliminar los productos del carrito.
+
+✅ Haz que se puedan modificar la cantidad de productos del carrito.
+
+✅ Sincroniza los cambios del carrito con la lista de productos.
+
+✅ Guarda en un localStorage el carrito para que se recupere al recargar la página. (da puntos)
+
+Lista de productos con los Filtros
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/ef5d32a9-ca6f-4fe9-9973-ea453a484860)
+
+Añadiendo productos al carrito 
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/73cf3291-60de-45d7-9d0a-85232fb3877a)
+
+Carrito 
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/c7493cd0-5a2c-4731-bc8e-0900f2b07680)
+
