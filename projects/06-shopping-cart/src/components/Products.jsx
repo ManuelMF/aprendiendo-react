@@ -3,7 +3,7 @@ import { AddToCartIcon, RemoveFromCartIcon } from './Icons.jsx'
 import { useCart } from '../hooks/useCart.js'
 
 export function Products({ products }) {
-  const { cart, addToCart, cleanCart, checkProductInCart, RemoveFromCart } =
+  const { cart, addToCart, cleanCart, checkProductInCart, removeFromCart } =
     useCart()
 
   return (
@@ -25,7 +25,7 @@ export function Products({ products }) {
                   }
                   onClick={() => {
                     isProductInCart
-                      ? RemoveFromCart(product)
+                      ? removeFromCart(product)
                       : addToCart(product)
                   }}
                 >
