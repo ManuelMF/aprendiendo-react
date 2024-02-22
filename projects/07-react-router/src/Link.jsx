@@ -8,3 +8,20 @@ export function navigate(href) {
   // Lo lanzamos
   window.dispatchEvent(navigationEvent)
 }
+
+export function Link({ target, to, ...props }) {
+  const handleClick = (event) => {
+    // controlar posibles clicks
+    const isMainEvent = event.button === 0 // primary click
+    const isModifiedEvent =
+      event.metaKey || event.altKey || event.ctrlKey || event.shiftKey
+    const isManageableEvent = target === undefined || target == '_self'
+
+    if (isMainEvent && isManageableEvent && !isModifiedEvent) {
+      event.preventDefault() //evitar se sea MPAs
+      navigate(to) // Navegacion por SPA
+    }
+  }
+
+  return <a onClick={handleClick} href={to} target={target} {...props} />
+}
