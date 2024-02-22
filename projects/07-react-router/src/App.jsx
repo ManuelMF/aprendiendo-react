@@ -1,34 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const NAVIGATION_ENVENT = 'pushstate'
 
+function navigate(href) {
+  window.history.pushState({}, '', href)
+
+  // Crear un evento personalizado para avisar que cambiamos de url
+  const navigationEvent = new Event(NAVIGATION_ENVENT)
+  // Lo lanzamos
+  window.dispatchEvent(navigationEvent)
+}
+
+function HomePage() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Home</h1>
+      <p>Esta es una página de ejemplo para crear un react router desde cero</p>
+      <a href="/about">Ir a sobre nosotros</a>
     </>
+  )
+}
+function AboutPage() {
+  return (
+    <>
+      <h1>Home</h1>
+      <div>
+        <img
+          src="https://media.licdn.com/dms/image/D4D03AQFRqaawWza3Qw/profile-displayphoto-shrink_200_200/0/1708110878486?e=1714003200&v=beta&t=7FS3-av3ePN51ikEf-AIQfDbFryHNENj7Kvy3io0Yp4"
+          alt="Foto de perfil"
+        />
+        <p>Hola! Me llamo Manuel y estoy creando un clon de React Router.</p>
+        <a href="/">Ir al home</a>
+      </div>
+    </>
+  )
+}
+
+function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname)
+
+  useEffect(() => {
+    const onLocationChange = () => {
+      setCurrentPath(window.location.pathname)
+    }
+
+    // añadimos un Lisener que mirara si se añade el evento anterior y si es asi ejecutara la funcion
+    window.addEventListener(NAVIGATION_ENVENT, onLocationChange)
+
+    return () => {
+      // Eliminamos el evento anterior pasandole tanto el nombre del evento como la funcion
+      window.removeEventListener(NAVIGATION_ENVENT, onLocationChange)
+    }
+  }, [])
+
+  return (
+    <main>
+      <h1>React Router</h1>
+      {currentPath === '/' && <HomePage />}
+      {currentPath === '/about' && <AboutPage />}
+    </main>
   )
 }
 
