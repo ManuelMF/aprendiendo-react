@@ -17,7 +17,7 @@ function HomePage() {
     <>
       <h1>Home</h1>
       <p>Esta es una página de ejemplo para crear un react router desde cero</p>
-      <a href="/about">Ir a sobre nosotros</a>
+      <button onClick={() => navigate('/about')}>Ir a sobre nosotros</button>
     </>
   )
 }
@@ -31,7 +31,7 @@ function AboutPage() {
           alt="Foto de perfil"
         />
         <p>Hola! Me llamo Manuel y estoy creando un clon de React Router.</p>
-        <a href="/">Ir al home</a>
+        <button onClick={() => navigate('/')}>Ir al home</button>
       </div>
     </>
   )
