@@ -12,6 +12,10 @@ const appRoutes = [
     path: '/search/:query',
     Component: SearchPage,
   },
+  {
+    path: '/:lang/about',
+    Component: AboutPage,
+  },
 ]
 
 function App() {
