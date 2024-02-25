@@ -2,17 +2,18 @@ import { useEffect, useState, Children } from 'react'
 import { EVENTS } from './const'
 import Page404 from './pages/404'
 import { match } from 'path-to-regexp'
+import { getCurrentPath } from './utils'
 
 export function Router({
   children,
   routes = [],
   defaultComponent: DefaultComponent = Page404,
 }) {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname)
+  const [currentPath, setCurrentPath] = useState(getCurrentPath())
 
   useEffect(() => {
     const onLocationChange = () => {
-      setCurrentPath(window.location.pathname)
+      setCurrentPath(getCurrentPath())
     }
 
     // añadimos un Lisener que mirara si se añade el evento anterior y si es asi ejecutara la funcion
