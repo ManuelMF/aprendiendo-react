@@ -8,7 +8,7 @@ import { AUTO_LANGUAGE } from './constants'
 import { ArrowsIcon } from './components/Icons'
 import { LanguageSelector } from './components/LanguageSelector'
 
-function App () {
+function App (): JSX.Element {
   const { fromLanguage, toLanguage, interchangeLanguages, setFromLanguages, setToLanguages } = useStore()
 
   return (
@@ -17,7 +17,12 @@ function App () {
       <Row>
         <Col>
           <h2>From</h2>
-          <LanguageSelector onChance={setFromLanguages} />
+          <LanguageSelector
+            type='from'
+            value={fromLanguage}
+            onChange={setFromLanguages}
+          />
+          {fromLanguage}
         </Col>
 
         <Col>
@@ -28,7 +33,11 @@ function App () {
 
         <Col>
           <h2>To</h2>
-          <LanguageSelector onChance={setToLanguages} />
+          <LanguageSelector
+            type='to'
+            value={toLanguage}
+            onChange={setToLanguages}
+          />
         </Col>
       </Row>
     </Container>

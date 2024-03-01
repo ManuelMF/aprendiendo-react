@@ -6,8 +6,8 @@ export type FromLanguage = Language | AutoLanguage
 
 // cuando es un objeto solemos usar interface en vez de type
 export interface State {
-  fromLanguage: string
-  toLanguage: string
+  fromLanguage: FromLanguage
+  toLanguage: Language
   fromText: string
   result: string
   loading: boolean
@@ -15,14 +15,14 @@ export interface State {
 
 export type Action =
   | { type: 'INTERCHANGE_LANGUAGES' }
-  | { type: 'SET_FROM_LANGUAGE', payload: string }
-  | { type: 'SET_TO_LANGUAGES', payload: string }
+  | { type: 'SET_FROM_LANGUAGE', payload: FromLanguage }
+  | { type: 'SET_TO_LANGUAGES', payload: Language }
   | { type: 'SET_FROM_TEXT', payload: string }
   | { type: 'SET_RESULT', payload: string }
 
 export interface StoreFunctions extends State {
   interchangeLanguages: () => void
-  setFromLanguages: (payload: Language) => void
+  setFromLanguages: (payload: FromLanguage) => void
   setToLanguages: (payload: Language) => void
   setFromText: (payload: string) => void
   setResult: (payload: string) => void
