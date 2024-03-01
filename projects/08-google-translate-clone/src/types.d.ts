@@ -1,3 +1,9 @@
+import { type AUTO_LANGUAGE, type SUPPORTED_LANGUAGES } from './constants'
+
+export type Language = keyof typeof SUPPORTED_LANGUAGES
+export type AutoLanguage = typeof AUTO_LANGUAGE
+export type FromLanguage = Language | AutoLanguage
+
 // cuando es un objeto solemos usar interface en vez de type
 export interface State {
   fromLanguage: string
@@ -13,3 +19,11 @@ export type Action =
   | { type: 'SET_TO_LANGUAGES', payload: string }
   | { type: 'SET_FROM_TEXT', payload: string }
   | { type: 'SET_RESULT', payload: string }
+
+export interface StoreFunctions extends State {
+  interchangeLanguages: () => void
+  setFromLanguages: (payload: string) => void
+  setToLanguages: (payload: string) => void
+  setFromText: (payload: string) => void
+  setResult: (payload: string) => void
+}

@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import { useReducer } from 'react'
-import { useStore } from './hook/useStoree'
+import { useStore } from './hook/useStore'
 
 function App () {
   const { fromLanguage, setFromLanguages } = useStore()
-  console.log(fromLanguage)
+
   return (
     <div className='App'>
       <h1>Google Translate</h1>
