@@ -1,22 +1,24 @@
 import { useReducer } from 'react'
-import { type StoreFunctions, type Action, type State, Language, FromLanguage } from '../types'
+import { type StoreFunctions, type Action, type State, type Language, type FromLanguage } from '../types'
+import { AUTO_LANGUAGE } from '../constants'
 
 // 1. Create a initialState
 const initialState: State = {
   fromLanguage: 'auto',
   toLanguage: 'en',
-  fromTexto: '',
+  fromText: '',
   result: '',
   loading: false
 }
 
 // 2. Create a reducer
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function reducer (state: State, action: Action) {
+function reducer (state: State, action: Action): State {
   const { type } = action
 
   switch (type) {
     case 'INTERCHANGE_LANGUAGES': {
+      if (state.fromLanguage === AUTO_LANGUAGE) return state
+
       return {
         ...state,
         fromLanguage: state.toLanguage,
@@ -63,34 +65,34 @@ export function useStore (): StoreFunctions {
   const [{
     fromLanguage,
     toLanguage,
-    fromTexto,
+    fromText,
     result,
     loading
   }, dispatch] = useReducer(reducer, initialState)
 
-  const interchangeLanguages = () => {
+  const interchangeLanguages = (): void => {
     dispatch({ type: 'INTERCHANGE_LANGUAGES' })
   }
 
-  const setFromLanguages = (payload: FromLanguage) => {
+  const setFromLanguages = (payload: FromLanguage): void => {
     dispatch({ type: 'SET_FROM_LANGUAGE', payload })
   }
 
-  const setToLanguages = (payload: Language) => {
+  const setToLanguages = (payload: Language): void => {
     dispatch({ type: 'SET_TO_LANGUAGES', payload })
   }
-  const setFromText = (payload: string) => {
+  const setFromText = (payload: string): void => {
     dispatch({ type: 'SET_FROM_TEXT', payload })
   }
 
-  const setResult = (payload: string) => {
+  const setResult = (payload: string): void => {
     dispatch({ type: 'SET_RESULT', payload })
   }
 
   return {
     fromLanguage,
     toLanguage,
-    fromTexto,
+    fromText,
     result,
     loading,
     interchangeLanguages,

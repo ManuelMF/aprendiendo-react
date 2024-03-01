@@ -8,7 +8,7 @@ export type FromLanguage = Language | AutoLanguage
 export interface State {
   fromLanguage: string
   toLanguage: string
-  fromTexto: string
+  fromText: string
   result: string
   loading: boolean
 }
@@ -22,8 +22,8 @@ export type Action =
 
 export interface StoreFunctions extends State {
   interchangeLanguages: () => void
-  setFromLanguages: (payload: string) => void
-  setToLanguages: (payload: string) => void
+  setFromLanguages: (payload: Language) => void
+  setToLanguages: (payload: Language) => void
   setFromText: (payload: string) => void
   setResult: (payload: string) => void
 }
