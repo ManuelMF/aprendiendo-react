@@ -27,3 +27,8 @@ export interface StoreFunctions extends State {
   setFromText: (payload: string) => void
   setResult: (payload: string) => void
 }
+
+export enum SectionType {
+  From = 'from',
+  To = 'to'
+}

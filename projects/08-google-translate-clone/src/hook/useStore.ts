@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { type StoreFunctions, type Action, type State, type Language, type FromLanguage } from '../types'
+import { type StoreFunctions, type Action, type State, type Language, type FromLanguage } from '../types.d'
 import { AUTO_LANGUAGE } from '../constants'
 
 // 1. Create a initialState
