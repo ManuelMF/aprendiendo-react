@@ -14,6 +14,7 @@ function App(): JSX.Element {
     toLanguage,
     fromText,
     result,
+    loading,
     interchangeLanguages,
     setFromLanguages,
     setToLanguages,
@@ -34,7 +35,6 @@ function App(): JSX.Element {
               onChange={setFromLanguages}
             />
             <TextArea
-              placeholder='Introducir texto'
               type={SectionType.From}
               value={fromText}
               onChange={setFromText}
@@ -61,7 +61,7 @@ function App(): JSX.Element {
               onChange={setToLanguages}
             />
             <TextArea
-              placeholder='Traducción'
+              loading={loading}
               type={SectionType.To}
               value={result}
               onChange={setResult}
