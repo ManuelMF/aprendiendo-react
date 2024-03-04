@@ -8,6 +8,7 @@ import { AUTO_LANGUAGE } from './constants'
 import { LanguageSelector, ArrowsIcon, TextArea } from './components'
 import { SectionType } from './types.d'
 import { useEffect } from 'react'
+import debounce from 'just-debounce-it'
 
 function App(): JSX.Element {
   const {

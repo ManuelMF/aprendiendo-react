@@ -3,8 +3,13 @@ import { OpenAI, ChatCompletionMessageParam } from 'openai'
 import { FromLanguage, Language } from '../types.d'
 
 const apiKey = import.meta.env.VITE_OPENAI_API_KEY
+const organization = import.meta.env.ORGANIZATION
 
-const openai = new OpenAI({ apiKey, dangerouslyAllowBrowser: true })
+const openai = new OpenAI({
+  organization,
+  apiKey,
+  dangerouslyAllowBrowser: true
+})
 
 export async function translate({
   fromLanguage,
@@ -50,10 +55,10 @@ export async function translate({
   const fromCode =
     fromLanguage === 'auto' ? 'auto' : SUPPORTED_LANGUAGES[fromLanguage]
   const toCode = SUPPORTED_LANGUAGES[toLanguage]
-  console.log(`🚀 ~ toCode:`, toCode)
 
   const completion = await openai.chat.completions.create({
     messages: [
+      ...messages,
       {
         role: 'user',
         content: `${text} {{${fromCode}}} [[${toCode}]]`
@@ -61,7 +66,5 @@ export async function translate({
     ],
     model: 'gpt-3.5-turbo'
   })
-  console.log(`🚀 ~ completion:`, completion)
-
-  return completion.choices[0]
+  return completion.choices[0].message.content
 }
