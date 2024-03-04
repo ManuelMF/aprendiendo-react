@@ -5,10 +5,14 @@ import { translate } from '../../08-backend/src/services/translate'
 import './App.css'
 import { useStore } from './hook/useStore'
 import { AUTO_LANGUAGE } from './constants'
-import { LanguageSelector, ArrowsIcon, TextArea } from './components'
+import {
+  LanguageSelector,
+  ArrowsIcon,
+  TextArea,
+  ClipboardIcon
+} from './components'
 import { SectionType } from './types.d'
 import { useEffect } from 'react'
-import debounce from 'just-debounce-it'
 import { useDebounce } from './hook/useDebounce'
 
 function App(): JSX.Element {
@@ -38,6 +42,10 @@ function App(): JSX.Element {
         setResult('Error')
       })
   }, [debouncedFromText, fromLanguage, toLanguage])
+
+  const handleClipboard = () => {
+    navigator.clipboard.writeText(result).catch(() => {})
+  }
 
   return (
     <Container fluid>
@@ -77,12 +85,21 @@ function App(): JSX.Element {
               value={toLanguage}
               onChange={setToLanguages}
             />
-            <TextArea
-              loading={loading}
-              type={SectionType.To}
-              value={result}
-              onChange={setResult}
-            />
+            <div style={{ position: 'relative' }}>
+              <TextArea
+                loading={loading}
+                type={SectionType.To}
+                value={result}
+                onChange={setResult}
+              />
+              <Button
+                variant='link'
+                style={{ position: 'absolute', left: 0, bottom: 0 }}
+                onClick={handleClipboard}
+              >
+                <ClipboardIcon />
+              </Button>
+            </div>
           </Stack>
         </Col>
       </Row>
