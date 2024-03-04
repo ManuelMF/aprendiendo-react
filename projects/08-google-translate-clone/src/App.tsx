@@ -9,7 +9,8 @@ import {
   LanguageSelector,
   ArrowsIcon,
   TextArea,
-  ClipboardIcon
+  ClipboardIcon,
+  SpeakerIcon
 } from './components'
 import { SectionType } from './types.d'
 import { useEffect } from 'react'
@@ -43,8 +44,14 @@ function App(): JSX.Element {
       })
   }, [debouncedFromText, fromLanguage, toLanguage])
 
-  const handleClipboard = () => {
+  const handleClipboard = (): void => {
     navigator.clipboard.writeText(result).catch(() => {})
+  }
+
+  const handleSpeak = (): void => {
+    const utterance = new SpeechSynthesisUtterance(result)
+    utterance.lang = toLanguage
+    speechSynthesis.speak(utterance)
   }
 
   return (
@@ -92,13 +99,21 @@ function App(): JSX.Element {
                 value={result}
                 onChange={setResult}
               />
-              <Button
-                variant='link'
-                style={{ position: 'absolute', left: 0, bottom: 0 }}
-                onClick={handleClipboard}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  bottom: 0,
+                  display: 'flex'
+                }}
               >
-                <ClipboardIcon />
-              </Button>
+                <Button variant='link' onClick={handleClipboard}>
+                  <ClipboardIcon />
+                </Button>
+                <Button variant='link' onClick={handleSpeak}>
+                  <SpeakerIcon />
+                </Button>
+              </div>
             </div>
           </Stack>
         </Col>
