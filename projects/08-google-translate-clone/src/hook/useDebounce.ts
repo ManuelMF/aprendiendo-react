@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 // el useDebounce va a recibir el tipo por parametro
-// se llamaria asi useDebounce<string>('Hello', 500)
+// se llamaria asi useDebounce('Hello', 500) no hace falta que pongamos el parametro que que lo hace internamente
 export function useDebounce<T>(value: T, delay = 500) {
   const [debouncedValue, setDebouncedValue] = useState(value)
 

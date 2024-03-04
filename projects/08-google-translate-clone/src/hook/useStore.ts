@@ -27,8 +27,12 @@ function reducer(state: State, action: Action): State {
     case 'INTERCHANGE_LANGUAGES': {
       if (state.fromLanguage === AUTO_LANGUAGE) return state
 
+      loading = state.fromText !== ''
+
       return {
         ...state,
+        loading,
+        result: '',
         fromLanguage: state.toLanguage,
         toLanguage: state.fromLanguage
       }

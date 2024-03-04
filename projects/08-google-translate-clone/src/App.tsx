@@ -24,7 +24,6 @@ function App(): JSX.Element {
     setFromText,
     setResult
   } = useStore()
-
   const debouncedFromText = useDebounce(fromText, 200)
 
   useEffect(() => {
