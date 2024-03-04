@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap'
-
+import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
+import { translate } from '../../08-backend/src/services/translate'
 import './App.css'
 import { useStore } from './hook/useStore'
 import { AUTO_LANGUAGE } from './constants'
 import { LanguageSelector, ArrowsIcon, TextArea } from './components'
 import { SectionType } from './types.d'
+import { useEffect } from 'react'
 
 function App(): JSX.Element {
   const {
@@ -21,6 +22,19 @@ function App(): JSX.Element {
     setFromText,
     setResult
   } = useStore()
+
+  useEffect(() => {
+    if (fromText === '') return
+
+    translate({ fromLanguage, toLanguage, text: fromText })
+      .then((result) => {
+        if (result == null) return
+        setResult(result)
+      })
+      .catch(() => {
+        setResult('Error')
+      })
+  }, [fromText])
 
   return (
     <Container fluid>
