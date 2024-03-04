@@ -9,6 +9,7 @@ import { LanguageSelector, ArrowsIcon, TextArea } from './components'
 import { SectionType } from './types.d'
 import { useEffect } from 'react'
 import debounce from 'just-debounce-it'
+import { useDebounce } from './hook/useDebounce'
 
 function App(): JSX.Element {
   const {
@@ -24,10 +25,12 @@ function App(): JSX.Element {
     setResult
   } = useStore()
 
-  useEffect(() => {
-    if (fromText === '') return
+  const debouncedFromText = useDebounce(fromText, 200)
 
-    translate({ fromLanguage, toLanguage, text: fromText })
+  useEffect(() => {
+    if (debouncedFromText === '') return
+
+    translate({ fromLanguage, toLanguage, text: debouncedFromText })
       .then((result) => {
         if (result == null) return
         setResult(result)
@@ -35,7 +38,7 @@ function App(): JSX.Element {
       .catch(() => {
         setResult('Error')
       })
-  }, [fromText])
+  }, [debouncedFromText, fromLanguage, toLanguage])
 
   return (
     <Container fluid>
