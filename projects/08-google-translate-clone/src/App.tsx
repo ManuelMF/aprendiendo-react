@@ -56,7 +56,7 @@ function App(): JSX.Element {
 
   return (
     <Container fluid>
-      <h1>Google Translate</h1>
+      <h3 style={{ textAlign: 'left' }}>Google Translate</h3>
       <Row>
         <Col>
           <Stack gap={2}>
