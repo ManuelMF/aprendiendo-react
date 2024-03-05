@@ -1,5 +1,26 @@
 ﻿# Learning React
 
+# Clon de Google Translate
+
+Este proyecto es un clon de Google Translate que ofrece todas las funcionalidades de la versión original. Utiliza la API de OpenAI para realizar traducciones y está desarrollado con TypeScript.
+
+## Funcionalidades
+
+- **Traducción de Texto**: Permite traducir texto entre múltiples idiomas, incluyendo español, inglés, alemán, y más.
+- **Detección de Idioma**: Capaz de detectar automáticamente el idioma de entrada.
+- **Intercambio de Idiomas**: Facilita el intercambio rápido entre los idiomas de origen y destino.
+- **Copiar Texto**: Proporciona la opción de copiar el texto traducido al portapapeles.
+- **Texto a Voz**: Utiliza la interfaz `SpeechSynthesisUtterance` de Google para leer en voz alta el texto traducido.
+
+## Tecnologías Utilizadas
+
+- **TypeScript**: El proyecto está desarrollado en TypeScript para una mejor legibilidad y mantenimiento del código.
+- **API de OpenAI**: Se integra con la API de OpenAI para realizar las traducciones.
+- **HTML/CSS/JavaScript**: La interfaz de usuario y la lógica del proyecto están implementadas utilizando HTML, CSS y JavaScript.
+
+![image](https://github.com/ManuelMF/aprendiendo-react/assets/103216638/ca160a61-40a6-4760-8ec0-b1dc393227fb)
+
+
 # Creación de un React Router desde Cero
 
 Este proyecto tiene como objetivo construir un React Router desde cero, abordando varios aspectos importantes del enrutamiento en aplicaciones React.
