@@ -17,6 +17,20 @@ import { useEffect } from 'react'
 import { useDebounce } from './hook/useDebounce'
 
 function App(): JSX.Element {
+  fetch('http://localhost:3001/api/data') // Reemplaza la URL con la ruta correcta a tu endpoint
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error('Error al obtener los datos') // Manejo de errores en caso de que la respuesta no sea exitosa
+      }
+      return await response.json() // Parsea la respuesta a formato JSON
+    })
+    .then((data) => {
+      console.log('Datos recibidos:', data) // Hacer algo con los datos recibidos
+    })
+    .catch((error) => {
+      console.error('Error de red:', error) // Manejo de errores de red
+    })
+
   const {
     fromLanguage,
     toLanguage,
