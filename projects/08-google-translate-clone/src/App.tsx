@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
-import { translate } from '../../08-backend/src/services/translate'
+import { translate } from '../../08-backend/src/services/translate.js'
 import './App.css'
 import { useStore } from './hook/useStore'
 import { AUTO_LANGUAGE } from './constants'
@@ -36,7 +36,7 @@ function App(): JSX.Element {
     const data = {
       // tus datos aquí
     }
-
+    /*
     fetch('http://localhost:3000/getTranslation', {
       method: 'POST',
       headers: {
@@ -51,7 +51,7 @@ function App(): JSX.Element {
       .catch((error) => {
         console.error('Error:', error)
       })
-
+ */
     translate({ fromLanguage, toLanguage, text: debouncedFromText })
       .then((result) => {
         if (result == null) return

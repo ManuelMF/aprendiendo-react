@@ -1,9 +1,13 @@
-import { SUPPORTED_LANGUAGES } from '../constants'
+import { SUPPORTED_LANGUAGES } from '../constants.js'
 import { OpenAI } from 'openai'
-import { FromLanguage, Language } from '../types.d'
+import dotenv from 'dotenv'
 
-const apiKey = import.meta.env.VITE_OPENAI_API_KEY
-const organization = import.meta.env.ORGANIZATION
+dotenv.config()
+
+//const apiKey = process.env.VITE_OPENAI_API_KEY
+//const organization = process.env.ORGANIZATION
+const apiKey = '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'
+const organization = 'org-PrftNnrysNq5zihlYHfmnKjr'
 
 const openai = new OpenAI({
   organization,
@@ -11,15 +15,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true
 })
 
-export async function translate({
-  fromLanguage,
-  toLanguage,
-  text
-}: {
-  fromLanguage: FromLanguage
-  toLanguage: Language
-  text: string
-}) {
+export async function translate({ fromLanguage, toLanguage, text }) {
   const messages = [
     {
       role: 'system',

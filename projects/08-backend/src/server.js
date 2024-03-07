@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import translate from './services/translate.ts'
+import { translate } from './services/translate.js'
 const app = express()
 
 app.use(cors())
@@ -11,7 +11,6 @@ app.post('/getTranslation', async (req, res) => {
   const { fromLanguage, toLanguages, text } = req.body
 
   const translateResponse = await translate({ fromLanguage, toLanguages, text })
-  console.log(`🚀 ~ app.post ~ translateResponse:`, translateResponse)
 
   res.json({
     message: 'Datos recibidos correctamente',
