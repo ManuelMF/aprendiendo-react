@@ -48,9 +48,11 @@ function App(): JSX.Element {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 1) setResult(data.message)
+        else setResult('error')
       })
       .catch((error) => {
         console.error('Error:', error)
+        setResult('error')
       })
   }, [debouncedFromText, fromLanguage, toLanguage])
 

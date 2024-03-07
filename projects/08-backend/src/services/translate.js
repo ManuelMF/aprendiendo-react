@@ -4,9 +4,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-//const apiKey = process.env.VITE_OPENAI_API_KEY
-//const organization = process.env.ORGANIZATION
-const apiKey = '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'
+// const apiKey = process.env.VITE_OPENAI_API_KEY
+// const organization = process.env.ORGANIZATION
+const apiKey = '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'
 const organization = 'org-PrftNnrysNq5zihlYHfmnKjr'
 
 const openai = new OpenAI({
