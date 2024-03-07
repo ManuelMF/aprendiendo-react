@@ -8,13 +8,13 @@ app.use(cors())
 app.use(express.json())
 
 app.post('/getTranslation', async (req, res) => {
-  const { fromLanguage, toLanguages, text } = req.body
+  const { fromLanguage, toLanguage, text } = req.body
 
-  const translateResponse = await translate({ fromLanguage, toLanguages, text })
+  const translateResponse = await translate({ fromLanguage, toLanguage, text })
 
   res.json({
-    message: 'Datos recibidos correctamente',
-    data: translateResponse
+    status: 1,
+    message: translateResponse
   })
 })
 

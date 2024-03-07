@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
-import { translate } from '../../08-backend/src/services/translate.js'
 import './App.css'
 import { useStore } from './hook/useStore'
 import { AUTO_LANGUAGE } from './constants'
@@ -29,14 +28,16 @@ function App(): JSX.Element {
     setFromText,
     setResult
   } = useStore()
-  const debouncedFromText = useDebounce(fromText, 200)
+  const debouncedFromText = useDebounce(fromText, 500)
 
   useEffect(() => {
     if (debouncedFromText === '') return
     const data = {
-      // tus datos aquí
+      fromLanguage,
+      toLanguage,
+      text: debouncedFromText
     }
-    /*
+
     fetch('http://localhost:3000/getTranslation', {
       method: 'POST',
       headers: {
@@ -46,19 +47,10 @@ function App(): JSX.Element {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Respuesta del servidor:', data)
+        if (data.status === 1) setResult(data.message)
       })
       .catch((error) => {
         console.error('Error:', error)
-      })
- */
-    translate({ fromLanguage, toLanguage, text: debouncedFromText })
-      .then((result) => {
-        if (result == null) return
-        setResult(result)
-      })
-      .catch(() => {
-        setResult('Error')
       })
   }, [debouncedFromText, fromLanguage, toLanguage])
 
