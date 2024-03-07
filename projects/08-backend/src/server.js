@@ -1,16 +1,25 @@
 import express from 'express'
 import cors from 'cors'
-
+import translate from './services/translate.ts'
 const app = express()
-const PORT = process.env.PORT || 3001
 
-app.use(express.json())
 app.use(cors())
 
-app.get('/api/data', (req, res) => {
-  res.send('¡Hola desde TypeScript y Express!')
+app.use(express.json())
+
+app.post('/getTranslation', async (req, res) => {
+  const { fromLanguage, toLanguages, text } = req.body
+
+  const translateResponse = await translate({ fromLanguage, toLanguages, text })
+  console.log(`🚀 ~ app.post ~ translateResponse:`, translateResponse)
+
+  res.json({
+    message: 'Datos recibidos correctamente',
+    data: translateResponse
+  })
 })
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`)
+const port = 3000
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`)
 })

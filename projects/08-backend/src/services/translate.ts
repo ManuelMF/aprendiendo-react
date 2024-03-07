@@ -1,5 +1,5 @@
 import { SUPPORTED_LANGUAGES } from '../constants'
-import { OpenAI, ChatCompletionMessageParam } from 'openai'
+import { OpenAI } from 'openai'
 import { FromLanguage, Language } from '../types.d'
 
 const apiKey = import.meta.env.VITE_OPENAI_API_KEY
@@ -20,7 +20,7 @@ export async function translate({
   toLanguage: Language
   text: string
 }) {
-  const messages: ChatCompletionMessageParam[] = [
+  const messages = [
     {
       role: 'system',
       content:
