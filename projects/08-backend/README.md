@@ -1,1 +1,2 @@
-Backend con el que se conecta a la Api
+Backend
+Desde aqui nos conectamos a la Api de Openai
