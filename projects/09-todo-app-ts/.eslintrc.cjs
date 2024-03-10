@@ -22,6 +22,8 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/space-before-function-paren': 'off',
+    'react/prop-types': 'off'
   }
 }
