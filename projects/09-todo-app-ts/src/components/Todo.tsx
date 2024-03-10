@@ -1,15 +1,18 @@
-import { type ListOfTodos } from '../types'
+import { type Todo as TodoType } from '../types'
 
-interface Props {
-  todos: ListOfTodos
-}
+type Props = TodoType
 
-export const Todos: React.FC<Props> = ({ todos }) => {
+export const Todo: React.FC<Props> = ({ id, title, completed }) => {
   return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>{todo.title}</li>
-      ))}
-    </ul>
+    <div className='view'>
+      <input
+        className='toggle'
+        checked={completed}
+        type='checkbox'
+        onChange={() => {}}
+      />
+      <label>{title}</label>
+      <button className='destroy' onClick={() => {}} />
+    </div>
   )
 }
