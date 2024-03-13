@@ -1,35 +1,13 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Todos } from './components/Todos'
-
-const mockTodos = [
-  {
-    id: '1',
-    title: 'Ir al gimnasio',
-    completed: true
-  },
-  {
-    id: '2',
-    title: 'Ver video de react',
-    completed: false
-  },
-  {
-    id: '3',
-    title: 'Ir a comprar',
-    completed: false
-  }
-]
+import { TodoContext } from './context/TodoContext'
 
 function App(): JSX.Element {
-  const [todos, setTodos] = useState(mockTodos)
-
-  const handleRemove = (id: string) => {
-    const newTodos = todos.filter((todo) => todo.id !== id)
-    setTodos(newTodos)
-  }
+  const { todos, setTodos } = useContext(TodoContext)
 
   return (
     <div className='todoapp'>
-      <Todos onRemoveTodo={handleRemove} todos={todos} />
+      <Todos todos={todos} />
     </div>
   )
 }

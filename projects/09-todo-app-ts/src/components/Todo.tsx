@@ -1,15 +1,18 @@
 import { type Todo as TodoType } from '../types'
+import { useContext } from 'react'
+import { RemoveTodoContext } from '../context/RemoveTodoContext'
+import { TodoContext } from '../context/TodoContext'
 
-interface Props extends TodoType {
-  onRemoveTodo: (id: string) => void
-}
+export const Todo: React.FC<TodoType> = ({ id, title, completed }) => {
+  const removeTodo = useContext(RemoveTodoContext)
+  const { todos, setTodos } = useContext(TodoContext)
 
-export const Todo: React.FC<Props> = ({
-  id,
-  title,
-  completed,
-  onRemoveTodo
-}) => {
+  const handleRemove = (): void => {
+    const newTodos = removeTodo({ id, todos })
+
+    setTodos(newTodos)
+  }
+
   return (
     <div className='view'>
       <input
@@ -22,7 +25,7 @@ export const Todo: React.FC<Props> = ({
       <button
         className='destroy'
         onClick={() => {
-          onRemoveTodo(id)
+          handleRemove()
         }}
       />
     </div>

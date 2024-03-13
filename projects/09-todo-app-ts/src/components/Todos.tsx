@@ -3,10 +3,9 @@ import { Todo } from './Todo'
 
 interface Props {
   todos: ListOfTodos
-  onRemoveTodo: (id: string) => void
 }
 
-export const Todos: React.FC<Props> = ({ todos, onRemoveTodo }) => {
+export const Todos: React.FC<Props> = ({ todos }) => {
   return (
     <ul className='todo-list'>
       {todos.map((todo) => (
@@ -16,7 +15,6 @@ export const Todos: React.FC<Props> = ({ todos, onRemoveTodo }) => {
             id={todo.id}
             title={todo.title}
             completed={todo.completed}
-            onRemoveTodo={onRemoveTodo}
           />
         </li>
       ))}
