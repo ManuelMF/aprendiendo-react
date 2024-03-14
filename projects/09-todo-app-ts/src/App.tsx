@@ -1,13 +1,32 @@
-import { useState, useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Todos } from './components/Todos'
 import { TodoContext } from './context/TodoContext'
+import { TODO_FILTERS } from './const'
+import { type FilterValue } from './types'
+import { Footer } from './components/Footer'
 
 function App(): JSX.Element {
-  const { todos, setTodos } = useContext(TodoContext)
+  const { todos } = useContext(TodoContext)
+  const [filterSelected, setFilterSelected] = useState<FilterValue>(
+    TODO_FILTERS.ALL
+  )
 
+  const handleFilterChange = (filter: FilterValue): void => {
+    setFilterSelected(filter)
+  }
+
+  const activeCount = todos.filter((todo) => !todo.completed).length
+  const completedCount = todos.length - activeCount
   return (
     <div className='todoapp'>
       <Todos todos={todos} />
+      <Footer
+        activeCount={activeCount}
+        completedCount={completedCount}
+        filterSelected={filterSelected}
+        onClearCompleted={() => {}}
+        handleFilterChange={handleFilterChange}
+      />
     </div>
   )
 }
