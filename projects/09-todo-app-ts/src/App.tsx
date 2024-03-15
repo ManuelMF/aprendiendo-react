@@ -6,13 +6,18 @@ import { type FilterValue } from './types'
 import { Footer } from './components/Footer'
 
 function App(): JSX.Element {
-  const { todos } = useContext(TodoContext)
+  const { todos, setTodos } = useContext(TodoContext)
   const [filterSelected, setFilterSelected] = useState<FilterValue>(
     TODO_FILTERS.ALL
   )
 
   const handleFilterChange = (filter: FilterValue): void => {
     setFilterSelected(filter)
+  }
+
+  const handleRemoveAllCompleted = () => {
+    const newTodos = todos.filter((todo) => !todo.completed)
+    setTodos(newTodos)
   }
 
   const activeCount = todos.filter((todo) => !todo.completed).length
@@ -35,7 +40,7 @@ function App(): JSX.Element {
         activeCount={activeCount}
         completedCount={completedCount}
         filterSelected={filterSelected}
-        onClearCompleted={() => {}}
+        onClearCompleted={handleRemoveAllCompleted}
         handleFilterChange={handleFilterChange}
       />
     </div>
