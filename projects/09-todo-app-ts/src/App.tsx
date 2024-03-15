@@ -2,8 +2,9 @@ import { useContext, useState } from 'react'
 import { Todos } from './components/Todos'
 import { TodoContext } from './context/TodoContext'
 import { TODO_FILTERS } from './const'
-import { type FilterValue } from './types'
+import { TodoTitle, type FilterValue } from './types'
 import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 
 function App(): JSX.Element {
   const { todos, setTodos } = useContext(TodoContext)
@@ -15,7 +16,7 @@ function App(): JSX.Element {
     setFilterSelected(filter)
   }
 
-  const handleRemoveAllCompleted = () => {
+  const handleRemoveAllCompleted = (): void => {
     const newTodos = todos.filter((todo) => !todo.completed)
     setTodos(newTodos)
   }
@@ -33,8 +34,21 @@ function App(): JSX.Element {
     return todo
   })
 
+  const handleAddTodo = ({ title }: TodoTitle): void => {
+    const newTodo = {
+      title,
+      id: crypto.randomUUID(),
+      completed: false
+    }
+
+    const newTodos = [...todos, newTodo]
+
+    setTodos(newTodos)
+  }
+
   return (
     <div className='todoapp'>
+      <Header onAddTodo={handleAddTodo} />
       <Todos todos={filteredTodos} />
       <Footer
         activeCount={activeCount}
